@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-accent: #e94560;
+  --color-success: #0f9b58;
+  --color-warning: #f5a623;
+  --color-background: var(--bg-base);
+  --color-card: var(--bg-card);
+  --color-text: var(--text-base);
+  --color-text-muted: var(--text-muted);
+  --color-border: var(--border-color);
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    --bg-base: #f8fafc;
+    --bg-card: rgba(255, 255, 255, 0.7);
+    --text-base: #0f172a;
+    --text-muted: #64748b;
+    --border-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .dark {
+    --bg-base: #0b0f19;
+    --bg-card: rgba(17, 24, 39, 0.6);
+    --text-base: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  body {
+    @apply bg-background text-text font-sans antialiased transition-colors duration-500;
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(233, 69, 96, 0.08), transparent 35%),
+      radial-gradient(circle at 85% 30%, rgba(15, 155, 88, 0.08), transparent 35%),
+      radial-gradient(circle at 50% 80%, rgba(245, 166, 35, 0.05), transparent 40%);
+    background-attachment: fixed;
+  }
+
+  .glass {
+    @apply bg-card backdrop-blur-2xl border border-border shadow-[0_8px_32px_0_rgba(0,0,0,0.04)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.2)] transition-all duration-300;
+  }
+
+  .glass-hover:hover {
+    @apply shadow-[0_12px_40px_0_rgba(233,69,96,0.15)] border-accent/30 -translate-y-1;
+  }
+
+  /* 3D Logo Effect */
+  .logo-3d {
+    background: linear-gradient(135deg, #e94560, #ff8a00);
+    box-shadow:
+      0 4px 0 #c2334d,
+      0 10px 20px rgba(233, 69, 96, 0.4),
+      inset 0 2px 0 rgba(255,255,255,0.4);
+    transform: perspective(200px) rotateX(15deg);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .logo-3d:hover {
+    transform: perspective(200px) rotateX(0deg) translateY(-4px) scale(1.05);
+    box-shadow:
+      0 8px 0 #c2334d,
+      0 15px 25px rgba(233, 69, 96, 0.5),
+      inset 0 2px 0 rgba(255,255,255,0.5);
+  }
+
+  /* Animated Gradient Text */
+  .text-gradient {
+    background: linear-gradient(to right, #e94560, #f5a623);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}

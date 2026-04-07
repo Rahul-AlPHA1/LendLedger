@@ -1,0 +1,5 @@
+{
+  "name": "LendLedger",
+  "description": "AI-powered informal loan tracking app for South Asian users with offline-first support and Gemini integration.",
+  "requestFramePermissions": []
+}
